@@ -49,13 +49,28 @@ def normalize_input(text: str) -> str:
 
 INJECTION_PATTERNS = [
     re.compile(r"ignore\s+(all\s+)?(previous|above|prior)?\s*instructions?", re.IGNORECASE),
+    re.compile(r"disregard\s+(all\s+)?(previous|above|prior)?\s*(instructions?|rules?|directives?)", re.IGNORECASE),
+    re.compile(r"forget\s+(your\s+)?(instructions?|rules?|prompt)", re.IGNORECASE),
+    re.compile(r"override\s+(your\s+)?(system\s+)?(prompt|instructions?)", re.IGNORECASE),
     re.compile(r"you\s+are\s+now\b", re.IGNORECASE),
-    re.compile(r"system\s+prompt", re.IGNORECASE),
-    re.compile(r"reveal\s+(your\s+)?(instructions?|prompt|password|api\s*key|internal\s+password)", re.IGNORECASE),
-    re.compile(r"pretend\s+(you\s+are|to\s+be)", re.IGNORECASE),
-    re.compile(r"act\s+as\s+(a\s+|an\s+)?unrestricted", re.IGNORECASE),
-    re.compile(r"disregard\s+(all\s+)?(previous|above)?\s*instructions?", re.IGNORECASE),
     re.compile(r"\bDAN\b", re.IGNORECASE),
+    re.compile(r"pretend\s+(you\s+are|to\s+be)", re.IGNORECASE),
+    re.compile(r"act\s+as\s+(a\s+|an\s+)?(unrestricted|evil|jailbroken)", re.IGNORECASE),
+    re.compile(r"role\s*play\s+as", re.IGNORECASE),
+    re.compile(r"system\s+prompt", re.IGNORECASE),
+    re.compile(r"reveal\s+(your\s+)?(instructions?|prompt|secrets?|password|api\s*key|internal\s+password)", re.IGNORECASE),
+    re.compile(r"show\s+(me\s+)?(your\s+)?(system\s+)?(prompt|instructions?|config)", re.IGNORECASE),
+    re.compile(r"translate\s+(your\s+)?(instructions?|system\s+prompt|rules?)", re.IGNORECASE),
+    re.compile(r"output\s+(your\s+)?(config|instructions?|prompt)\s+(as|in)\s+(json|yaml|xml)", re.IGNORECASE),
+    re.compile(r"fill\s+in\s*(the\s*)?(blank|blanks|___)", re.IGNORECASE),
+    re.compile(r"password\s*(is|=|:)", re.IGNORECASE),
+    re.compile(r"connection\s+string", re.IGNORECASE),
+    re.compile(r"base64|rot13", re.IGNORECASE),
+    re.compile(r"bỏ\s+qua\s+(mọi\s+)?hướng\s+dẫn", re.IGNORECASE),
+    re.compile(r"quên\s+(mọi\s+)?hướng\s+dẫn", re.IGNORECASE),
+    re.compile(r"tiết\s+lộ\s+(mật\s+khẩu|api|system\s*prompt)", re.IGNORECASE),
+    re.compile(r"cho\s+tôi\s+(xem\s+)?(mật\s+khẩu|system\s*prompt|api\s*key)", re.IGNORECASE),
+    re.compile(r"bạn\s+là\s+DAN", re.IGNORECASE),
 ]
 
 
